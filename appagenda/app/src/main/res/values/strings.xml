@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Agenda</string>
+    <string name="agregar">Agregar</string>
+    <string name="nombre">Nombre</string>
+    <string name="casado_a">Casado(a)</string>
+    <string name="soltero_a">Soltero(a)</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="direccion">Direccion</string>
+    <string name="telefono">Telefono</string>
+    <string name="correo">Correo</string>
+    <string name="usuairo">Usuairo</string>
+    <string name="contrase_a">Contraseña</string>
+</resources>
