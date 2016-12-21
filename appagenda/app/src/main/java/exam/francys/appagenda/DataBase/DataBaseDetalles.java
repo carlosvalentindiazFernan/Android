@@ -7,20 +7,20 @@ package exam.francys.appagenda.DataBase;
 public class DataBaseDetalles {
 
     //Base de datos
-    public static String name ="Agenda";
-    public static int version =1;
+    public static final String name ="Agenda";
+    public static final int version =2;
 
 
     //Tabla
-    public  static  String  TABLE = "Usuarios";
-    public  static  String  KEY_ID = "id";
-    public  static  String  KEY_Name = "name";
-    public  static  String  KEY_App = "App";
-    public  static  String  Key_Direccion = "Direccion";
-    public  static  String  Key_Correo = "Correo";
-    public  static  String  Key_Telefono ="Telefono";
-    public  static  String  Key_Estado = "Estado";
-    public  static  String  Key_Usuario = "Usuario";
-    public  static  String  Key_Contrase ="Contra" ;
+    public  static final String  TABLE = "Usuarios";
+    public  static final String  KEY_ID = "id";
+    public  static final String  KEY_Name = "name";
+    public  static final String  KEY_App = "App";
+    public  static final String  Key_Direccion = "Direccion";
+    public  static final String  Key_Correo = "Correo";
+    public  static final String  Key_Telefono ="phone";
+    public  static final String  Key_Estado = "Estado";
+    public  static final String  Key_Usuario = "Usuario";
+    public  static final String  Key_Contrase ="Contra" ;
 
 }

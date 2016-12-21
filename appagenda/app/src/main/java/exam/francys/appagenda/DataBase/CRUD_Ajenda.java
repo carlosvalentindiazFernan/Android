@@ -31,7 +31,6 @@ public class CRUD_Ajenda {
                 + " ' "+ usuario.getEstado() +" ' ,"+" ' "+usuario.getUsuario()+"' ,"
                 +" ' "+ usuario.getContrase() +"' )";
 
-        System.out.println(cade);
         db.execSQL(cade);
 
 

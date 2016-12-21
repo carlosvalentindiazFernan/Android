@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     AgendaDB agenda;
     int Numeroesta=1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
             User.setUsuario(usuario.getText().toString());
             User.setContrase(contra.getText().toString());
 
-            CRUD_Ajenda.Insertar(agenda,User);
+            try {
+                CRUD_Ajenda.Insertar(agenda, User);
+                Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){}
 
         }else{
             this.EventoNavigation();
