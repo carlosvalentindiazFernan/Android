@@ -6,10 +6,6 @@ package exam.francys.appagenda.DataBase;
 
 public class DataBaseDetalles {
 
-    //Base de datos
-    public static final String name ="Agenda";
-    public static final int version =2;
-
 
     //Tabla
     public  static final String  TABLE = "Usuarios";

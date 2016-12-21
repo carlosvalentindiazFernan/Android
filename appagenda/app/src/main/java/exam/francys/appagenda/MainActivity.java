@@ -20,7 +20,10 @@ import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import exam.francys.appagenda.DataBase.AgendaDB;
 import exam.francys.appagenda.DataBase.CRUD_Ajenda;
+import exam.francys.appagenda.DataBase.DataBaseDetalles;
 import exam.francys.appagenda.Models.Usuario;
+
+import static exam.francys.appagenda.DataBase.CRUD_Ajenda.buscarNombre;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,37 +68,59 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.agregar)
     public void agrega(View view){
+//        CRUD_Ajenda.getall(agenda);
+
+
+        Log.d("hola",nombre.getText().toString()+" "+ app.getText().toString() +" "
+                + direccion.getText().toString()+" "+ telefono.getText().toString()+ " "
+                + correo.getText().toString()+" "+ usuario.getText().toString() +" "+ contra.getText().toString()  );
 
         if(nombre.length()>0 && app.length()>0 && direccion.length() >0
-                && telefono.length() >10 && correo.length() >0
+                && telefono.length() >9 && correo.length() >0
                 && usuario.length()>0 && contra.length() >6 ){
 
+//            CRUD_Ajenda.getall(agenda);
 
-            User.setNombre(nombre.getText().toString());
-            User.setApp(app.getText().toString());
-            User.setDireccion(direccion.getText().toString());
-            User.setTelefono(telefono.getText().toString());
-            User.setCorreo(correo.getText().toString());
-            User.setEstado(String.valueOf(Numeroesta));
-            User.setUsuario(usuario.getText().toString());
-            User.setContrase(contra.getText().toString());
+            if(CRUD_Ajenda.buscarNombre(agenda,nombre.getText().toString()) ==0 &&
+                    CRUD_Ajenda.buscacorreo(agenda,correo.getText().toString()) ==0 &&
+                    CRUD_Ajenda.buscaUsuario(agenda,usuario.getText().toString())==0){
 
-            try {
-                CRUD_Ajenda.Insertar(agenda, User);
-                Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show();
-            }catch (Exception e){}
+                    User.setNombre(nombre.getText().toString());
+                    User.setApp(app.getText().toString());
+                    User.setDireccion(direccion.getText().toString());
+                    User.setTelefono(telefono.getText().toString());
+                    User.setCorreo(correo.getText().toString());
+                    User.setEstado(String.valueOf(Numeroesta));
+                    User.setUsuario(usuario.getText().toString());
+                    User.setContrase(contra.getText().toString());
+
+                try {
+                    CRUD_Ajenda.Insertar(agenda, User);
+                    Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){}
+
+
+            }else {
+                this.EventoNavigation("El nombre,correo o usuario que ingreso ya existen");
+            }
 
         }else{
-            this.EventoNavigation();
+            this.EventoNavigation("Verifica, Campos vacios");
         }
-
-
 
     }
 
-    private void EventoNavigation(){
+
+
+    private void EventoNavigation(String text){
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
-        dialogo1.setTitle("Verifica, Campos vacios").show();
+        dialogo1.setTitle(text);
+        dialogo1.setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).show();
     }
 
 
