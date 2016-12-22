@@ -9,21 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import com.rengwuxian.materialedittext.MaterialEditText;
-
-import java.util.Calendar;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import exam.francys.appagenda.DataBase.AgendaDB;
 import exam.francys.appagenda.DataBase.CRUD_Ajenda;
-import exam.francys.appagenda.DataBase.DataBaseDetalles;
 import exam.francys.appagenda.Models.Usuario;
-
-import static exam.francys.appagenda.DataBase.CRUD_Ajenda.buscarNombre;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.EstadoGrupo) RadioGroup estado;
     @BindView(R.id.Usuario) MaterialEditText usuario;
     @BindView(R.id.Contra) MaterialEditText contra;
+
     Usuario User;
     AgendaDB agenda;
     int Numeroesta=1;
@@ -49,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         agenda = new AgendaDB(this);
 
-        nombre.setAutoValidate(true);
+        CRUD_Ajenda.getall(agenda);
 
         estado.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -68,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.agregar)
     public void agrega(View view){
-//        CRUD_Ajenda.getall(agenda);
-
 
         Log.d("hola",nombre.getText().toString()+" "+ app.getText().toString() +" "
                 + direccion.getText().toString()+" "+ telefono.getText().toString()+ " "
@@ -78,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
         if(nombre.length()>0 && app.length()>0 && direccion.length() >0
                 && telefono.length() >9 && correo.length() >0
                 && usuario.length()>0 && contra.length() >6 ){
-
-//            CRUD_Ajenda.getall(agenda);
 
             if(CRUD_Ajenda.buscarNombre(agenda,nombre.getText().toString()) ==0 &&
                     CRUD_Ajenda.buscacorreo(agenda,correo.getText().toString()) ==0 &&
@@ -94,11 +83,11 @@ public class MainActivity extends AppCompatActivity {
                     User.setUsuario(usuario.getText().toString());
                     User.setContrase(contra.getText().toString());
 
-                try {
-                    CRUD_Ajenda.Insertar(agenda, User);
-                    Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show();
-                }catch (Exception e){}
+                    try{
+                        long numero= CRUD_Ajenda.Ingresa(agenda, User);
+                        Toast.makeText(this, "usuario registrado numero " + numero, Toast.LENGTH_SHORT).show();
 
+                    }catch (Exception e){}
 
             }else {
                 this.EventoNavigation("El nombre,correo o usuario que ingreso ya existen");
@@ -120,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
             }
-        }).show();
+            }).show();
     }
 
 

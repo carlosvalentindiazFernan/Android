@@ -1,5 +1,6 @@
 package exam.francys.appagenda.DataBase;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.LoginFilter;
@@ -18,27 +19,21 @@ import static exam.francys.appagenda.R.string.nombre;
 public class CRUD_Ajenda {
 
 
-    public static void Insertar(AgendaDB context, Usuario usuario){
+    public  static long Ingresa(AgendaDB context,Usuario usuario){
         SQLiteDatabase db = context.getWritableDatabase();
-        String cade = "INSERT INTO " +
-                DataBaseDetalles.TABLE          + " (" +
-                DataBaseDetalles.KEY_Name       + "," +
-                DataBaseDetalles.KEY_App        + "," +
-                DataBaseDetalles.Key_Direccion  + "," +
-                DataBaseDetalles.Key_Telefono   + "," +
-                DataBaseDetalles.Key_Correo     +","+
-                DataBaseDetalles.Key_Estado     +","+
-                DataBaseDetalles.Key_Usuario    +","+
-                DataBaseDetalles.Key_Contrase   +
-                ") VALUES ( " + " ' " + usuario.getNombre() + "'  ,"
-                + " ' " + usuario.getApp() + "' ," + " ' " + usuario.getDireccion() + " ' ,"
-                + " ' " + usuario.getTelefono() + "' ," + " ' " + usuario.getCorreo() + " ',"
-                + " ' "+ usuario.getEstado() +" ' ,"+" ' "+usuario.getUsuario()+"' ,"
-                +" ' "+ usuario.getContrase() +"' )";
 
-        db.execSQL(cade);
+        ContentValues registo = new ContentValues();
+        registo.put(DataBaseDetalles.KEY_Name       ,usuario.getNombre());
+        registo.put(DataBaseDetalles.KEY_App        ,usuario.getApp());
+        registo.put(DataBaseDetalles.Key_Direccion  ,usuario.getDireccion());
+        registo.put(DataBaseDetalles.Key_Telefono   ,usuario.getTelefono());
+        registo.put(DataBaseDetalles.Key_Correo     ,usuario.getCorreo());
+        registo.put(DataBaseDetalles.Key_Estado     ,usuario.getEstado());
+        registo.put(DataBaseDetalles.Key_Usuario    ,usuario.getUsuario());
+        registo.put(DataBaseDetalles.Key_Contrase   ,usuario.getContrase());
 
-
+        long insert = db.insert(DataBaseDetalles.TABLE, null, registo);
+        return insert;
     }
 
 
@@ -51,6 +46,7 @@ public class CRUD_Ajenda {
                 do {
                     int id = c.getInt(0);
                     String name = c.getString(1);
+                    Log.d("Usuario ", id +" "+ name);
                 } while (c.moveToNext());
             }
         } catch (Exception e) {
