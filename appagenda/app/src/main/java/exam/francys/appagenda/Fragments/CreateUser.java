@@ -88,14 +88,14 @@ public class CreateUser extends Fragment {
                     CRUD_Diary.buscacorreo(agenda,correo.getText().toString()) ==0 &&
                     CRUD_Diary.buscaUsuario(agenda,usuario.getText().toString())==0){
 
-                User.setNombre(nombre.getText().toString());
-                User.setApp(app.getText().toString());
-                User.setDireccion(direccion.getText().toString());
-                User.setTelefono(telefono.getText().toString());
-                User.setCorreo(correo.getText().toString());
-                User.setEstado(String.valueOf(Numeroesta));
-                User.setUsuario(usuario.getText().toString());
-                User.setContrase(contra.getText().toString());
+                        User.setNombre(nombre.getText().toString());
+                        User.setApp(app.getText().toString());
+                        User.setDireccion(direccion.getText().toString());
+                        User.setTelefono(telefono.getText().toString());
+                        User.setCorreo(correo.getText().toString());
+                        User.setEstado(String.valueOf(Numeroesta));
+                        User.setUsuario(usuario.getText().toString());
+                        User.setContrase(contra.getText().toString());
 
                 try{
                     long numero= CRUD_Diary.Ingresa(agenda, User);
