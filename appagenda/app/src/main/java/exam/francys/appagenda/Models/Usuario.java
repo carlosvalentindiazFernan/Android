@@ -16,6 +16,21 @@ public class Usuario {
     private    String  Usuario;
     private    String  Contrase ;
 
+    public Usuario(){
+
+    }
+
+    public Usuario(String nombre, String app, String direccion, String correo, String telefono, String estado, String usuario, String contrase) {
+        this.Nombre = nombre;
+        this.App = app;
+        this.Direccion = direccion;
+        this.Correo = correo;
+        this.Telefono = telefono;
+        this.Estado = estado;
+        this.Usuario = usuario;
+        this.Contrase = contrase;
+    }
+
     public String getID() {
         return ID;
     }
@@ -55,7 +70,6 @@ public class Usuario {
     public void setCorreo(String correo) {
         Correo = correo;
     }
-
 
     public String getTelefono() {
         return Telefono;
