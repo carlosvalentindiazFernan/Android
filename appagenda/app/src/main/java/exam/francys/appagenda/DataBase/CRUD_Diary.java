@@ -10,11 +10,6 @@ import java.util.List;
 
 import exam.francys.appagenda.Models.Usuario;
 
-import static android.R.attr.id;
-import static android.R.attr.name;
-import static exam.francys.appagenda.R.string.correo;
-import static exam.francys.appagenda.R.string.nombre;
-
 /**
  * Created by Francys on 20/12/2016.
  */
@@ -22,7 +17,7 @@ import static exam.francys.appagenda.R.string.nombre;
 public class CRUD_Diary {
 
 
-    public  static long Ingresa(Diary context, Usuario usuario){
+    public  static long Ingresa(Diarys context, Usuario usuario){
         SQLiteDatabase db = context.getWritableDatabase();
 
         ContentValues registo = new ContentValues();
@@ -40,7 +35,7 @@ public class CRUD_Diary {
     }
 
 
-    public static List<Usuario> getall(Diary context) {
+    public static List<Usuario> getall(Diarys context) {
         SQLiteDatabase db = context.getReadableDatabase();
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -64,7 +59,7 @@ public class CRUD_Diary {
 
 
 
-    public static int buscarNombre(Diary context, String nombre){
+    public static int buscarNombre(Diarys context, String nombre){
         SQLiteDatabase db = context.getReadableDatabase();
 
         int num = 0;
@@ -81,7 +76,7 @@ public class CRUD_Diary {
     }
 
 
-    public static int buscacorreo(Diary context, String correo){
+    public static int buscacorreo(Diarys context, String correo){
         SQLiteDatabase db = context.getReadableDatabase();
 
         int num = 0;
@@ -99,7 +94,7 @@ public class CRUD_Diary {
     }
 
 
-    public static int buscaUsuario(Diary context, String usuario){
+    public static int buscaUsuario(Diarys context, String usuario){
         SQLiteDatabase db = context.getReadableDatabase();
 
         int num = 0;

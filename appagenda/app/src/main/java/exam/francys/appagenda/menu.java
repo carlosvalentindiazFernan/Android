@@ -1,10 +1,7 @@
 package exam.francys.appagenda;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import exam.francys.appagenda.Fragments.CreateUser;
+import exam.francys.appagenda.Fragments.CreateUsers;
 import exam.francys.appagenda.Fragments.ShowUsers;
 
 public class menu extends AppCompatActivity
@@ -31,7 +28,7 @@ public class menu extends AppCompatActivity
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.content_menu,new CreateUser());
+        transaction.replace(R.id.content_menu,new CreateUsers());
         transaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -87,7 +84,7 @@ public class menu extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
 
-            transaction.replace(R.id.content_menu,new CreateUser());
+            transaction.replace(R.id.content_menu,new CreateUsers());
             transaction.commit();
 
         } else if (id == R.id.nav_gallery) {

@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -21,11 +19,10 @@ import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import exam.francys.appagenda.DataBase.CRUD_Diary;
-import exam.francys.appagenda.DataBase.Diary;
+import exam.francys.appagenda.DataBase.Diarys;
 import exam.francys.appagenda.Models.Usuario;
 import exam.francys.appagenda.R;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static butterknife.ButterKnife.bind;
 
 /**
@@ -42,7 +39,7 @@ public class CreateUser extends Fragment {
     @BindView(R.id.Contra) MaterialEditText contra;
 
     private Usuario User;
-    private Diary agenda;
+    private Diarys agenda;
     private int Numeroesta=1;
     private Unbinder unbinder;
 
@@ -64,7 +61,7 @@ public class CreateUser extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         User = new Usuario();
-        agenda = new Diary(view.getContext());
+        agenda = new Diarys(view.getContext());
  //       CRUD_Diary.getall(agenda);
     }
 
